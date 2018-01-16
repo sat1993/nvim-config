@@ -59,6 +59,20 @@ function! UserFuncJumpLastPos()
   endif
 endfunction
 
+function! UserFuncGetFileName()
+  let l:filename = expand('%:p')
+  " 对于 index.js 特殊处理，如果文件名字是 /xxxx/xxx/xx/index.js 取 xx
+  let l:js_index_file_reg = ':s?\v^.*\/(\w+)\/index\.js$?\1?'
+  if l:filename =~? '\vindex\.js$'
+    let l:filename = fnamemodify(l:filename, l:js_index_file_reg)
+  elseif l:filename !=# ''
+    let l:filename = fnamemodify(l:filename, ':t')
+  else
+    let l:filename = '[No Name]'
+  endif
+  return l:filename
+endfunction
+
 function! UserFuncGetLinterWarnings() abort
   let l:counts = ale#statusline#Count(bufnr(''))
   let l:all_errors = l:counts.error + l:counts.style_error
@@ -87,22 +101,26 @@ function! UserFuncGitBranchAndBlame() abort
     return l:branchAndBlame
 endfunction
 
-function! UserFuncGetGlame(...) abort
-    let l:current_line = getcurpos()[1]
-    if s:git_blame_line !=# l:current_line
-        let l:msg = util#git#get_current_line_blame()
-        let l:msg_format = substitute(l:msg, '\v[^(]*\(([^)]*)\).*', '\1', 'g')
-        if l:msg !=# l:msg_format
-            let l:msg_format = split(l:msg_format, ' ')
-            let s:user_config_blame = get(l:msg_format, '1', '') . ' ' . get(l:msg_format, '0', '')
-            call UserFuncUpdateLightline()
-        endif
-    endif
-    let s:git_blame_line = l:current_line
+function! UserFuncClearTimer() abort
+  if exists('g:UserVarHoldLineTimer')
+    call timer_stop(g:UserVarHoldLineTimer)
+  endif
+endfunction
 
-    let g:UserVarHoldLineTimer = timer_start(1000,
-                \'UserFuncGetGlame',
-                \{ 'repeat': 1 })
+function! UserFuncStartTimer() abort
+  let g:UserVarHoldLineTimer = timer_start(500,
+        \'UserFuncGetGlame',
+        \{ 'repeat': 1 })
+endfunction
+
+function! UserFuncGetGlame(...) abort
+    let l:blame_info = get(git_blame#get_lines_blame_parse(), '0', {})
+    if get(l:blame_info, 'status', v:false)
+      let s:user_config_blame = get(l:blame_info, 'date', '') . ' ' . get(l:blame_info, 'user', '')
+    else
+      let s:user_config_blame = ''
+    endif
+    call UserFuncUpdateLightline()
 endfunction
 
 function! UserFuncUpdateLightline()

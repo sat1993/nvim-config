@@ -12,6 +12,8 @@ Plug 'roxma/nvim-completion-manager'
 Plug 'fgrsnau/ncm-otherbuf'
 Plug 'roxma/ncm-github'
 Plug 'roxma/nvim-cm-tern',  { 'do': 'npm install' }
+Plug 'Shougo/neco-syntax'
+Plug 'Shougo/neco-vim',     { 'for': 'vim' }
 " }}} autocomplete
 
 " linter and format {{{
@@ -27,11 +29,9 @@ Plug 'joker1007/vim-markdown-quote-syntax', { 'for': 'markdown' }
 
 " html css {{{
 Plug 'mattn/emmet-vim'
-Plug 'docunext/closetag.vim',   { 'for': ['html', 'jst', 'string', 'String', 'xml', 'markdown'] }
 " }}} html css
 
 " css {{{
-Plug 'iamcco/csscomb.vim',      { 'for': ['css', 'stylus', 'less', 'sass'] }
 Plug 'calebeby/ncm-css'
 " }}} css
 
@@ -39,12 +39,10 @@ Plug 'calebeby/ncm-css'
 Plug 'maksimr/vim-jsbeautify',          { 'for': ['javascript', 'html', 'css', 'json'] }
 Plug 'heavenshell/vim-jsdoc',           { 'for': 'javascript' }
 Plug 'galooshi/vim-import-js',          { 'for': 'javascript' }
-Plug 'leafgarland/typescript-vim'
 " }}} javascript
 
 " git {{{
 Plug 'tpope/vim-fugitive'       " git插件，使用:Gstatus或:Git status
-Plug 'airblade/vim-gitgutter'   " 同git diff,实时展示文件中修改的行
 Plug 'junegunn/gv.vim'
 Plug 'cohama/agit.vim'
 " }}} git
@@ -91,10 +89,15 @@ Plug 'tweekmonster/helpful.vim'
 Plug 'iamcco/go-to-file.vim'
 Plug 'iamcco/go-to-rules.vim'
 Plug 'iamcco/react-error-codes.vim'
-Plug 'bfredl/nvim-miniyank'
-Plug 'iamcco/util.vim'
-Plug 'tweekmonster/startuptime.vim'
+Plug 'iamcco/git-blame.vim'
 Plug 'iamcco/file-manager.vim'
+Plug 'iamcco/buzuo.vim'
+Plug 'iamcco/project.vim'
+Plug 'bfredl/nvim-miniyank'
+Plug 'tweekmonster/startuptime.vim'
+Plug 'junegunn/vader.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'juanibiapina/vim-lighttree'
 " }}} Util
 
 " UI theme font {{{
@@ -106,7 +109,6 @@ Plug 'icymind/NeoSolarized'
 "Plug 'tweekmonster/braceless.vim'
 "Plug 'samuelsimoes/vim-jsx-utils'
 "Plug 'alvan/vim-closetag'
-"Plug 'spf13/vim-autoclose'
 "Plug 'junegunn/vim-emoji'
 " }}} maybe next
 

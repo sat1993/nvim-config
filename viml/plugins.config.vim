@@ -14,6 +14,9 @@ function! s:my_cr_function()
     return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
 endfunction
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"let $NVIM_PYTHON_LOG_FILE="/Users/aioiyuuko/nvim_log"
+"let $NVIM_NCM_LOG_LEVEL="DEBUG"
+"let $NVIM_NCM_MULTI_THREAD=0
 " }}} nvim-completion-manager
 
 " ALE {{{
@@ -32,10 +35,6 @@ let g:ale_fix_on_save = 1
 let g:closetag_html_style=1     " html sytle tag matching
 autocmd BufRead,BufNewFile *.{String,string} set filetype=html
 " }}} closetag
-
-" typescript {{{
-autocmd FileType typescript :set makeprg=tsc
-" }}}
 
 " vim-JsBeautify {{{
 let g:html_indent_inctags = 'html,body,head,tbody'
@@ -78,10 +77,6 @@ nmap <Leader>fo :CtrlSFOpen<CR>
 " vim-fugitive {{{
 " TODO: config
 " }}} vim-fugitive
-
-" vim-gitgutter {{{
-" TODO: config
-" }}} vim-gitgutter
 
 " vim-multiple-cursors {{{
 let g:multi_cursor_next_key='<C-n>'
@@ -211,6 +206,7 @@ let g:lightline = {
             \            ]
             \ },
             \ 'component_expand': {
+            \   'filename': 'UserFuncGetFileName',
             \   'gitBranchAndBlame': 'UserFuncGitBranchAndBlame',
             \   'linter_warnings': 'UserFuncGetLinterWarnings',
             \   'linter_errors': 'UserFuncGetLinterErrors',
@@ -221,10 +217,8 @@ let g:lightline = {
             \ },
             \ }
 autocmd User ALELint call UserFuncUpdateLightline()
-
-let g:UserVarHoldLineTimer = timer_start(1000,
-            \'UserFuncGetGlame',
-            \{ 'repeat': 1 })
+autocmd CursorHold * call UserFuncStartTimer()
+autocmd CursorMoved * call UserFuncClearTimer()
 " }}}
 
 " matchup {{{
