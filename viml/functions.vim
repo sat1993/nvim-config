@@ -108,19 +108,6 @@ function! UserFuncClearTimer() abort
 endfunction
 
 function! UserFuncStartTimer() abort
-  let g:UserVarHoldLineTimer = timer_start(500,
-        \'UserFuncGetGlame',
-        \{ 'repeat': 1 })
-endfunction
-
-function! UserFuncGetGlame(...) abort
-    let l:blame_info = get(git_blame#get_lines_blame_parse(), '0', {})
-    if get(l:blame_info, 'status', v:false)
-      let s:user_config_blame = get(l:blame_info, 'date', '') . ' ' . get(l:blame_info, 'user', '')
-    else
-      let s:user_config_blame = ''
-    endif
-    call UserFuncUpdateLightline()
 endfunction
 
 function! UserFuncUpdateLightline()

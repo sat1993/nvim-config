@@ -55,49 +55,27 @@ Plug 'tpope/vim-surround'               " 快速环绕 ds' cs'( csw'===ysiw' ySS
 Plug 'kana/vim-textobj-user'            " 扩展文本对象
 Plug 'terryma/vim-expand-region'        " 选中区块
 Plug 'scrooloose/nerdcommenter'         " 快速注释
-" TODO
 Plug 'kshenoy/vim-signature'
 " }}} cursor move and align
 
 " Util {{{
 Plug 'Shougo/vinarise.vim'
-" TODO
 Plug 'dyng/ctrlsf.vim'          " 快速搜索文件
-Plug 'iamcco/dict.vim', { 'on': 'Dict' }
 Plug 'simnalamburt/vim-mundo'   " 文件历史插件
 Plug 'junegunn/vim-easy-align'  " 对齐
 Plug 'neoclide/vim-jsx-improve'
 Plug 'tpope/vim-repeat'         " 重复命令 with .
-Plug 'thinca/vim-quickrun'
 Plug 'kassio/neoterm'
-" TODO
 Plug 'iamcco/smartIM.nvim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-" TODO
 Plug 'Konfekt/FastFold'
-Plug 'metakirby5/codi.vim'
-" TODO
-Plug 'itchyny/calendar.vim'
 Plug 'andymass/vim-matchup'
 Plug 'Shougo/denite.nvim'
-" TODO
-Plug 'chemzqm/todoapp.vim'
 Plug 'pocari/vim-denite-emoji'
 Plug 'tweekmonster/helpful.vim'
-" TODO
-Plug 'iamcco/go-to-file.vim'
-Plug 'iamcco/go-to-rules.vim'
-Plug 'iamcco/react-error-codes.vim'
-Plug 'iamcco/git-blame.vim'
-Plug 'iamcco/file-manager.vim'
-Plug 'iamcco/buzuo.vim'
-Plug 'iamcco/project.vim'
 Plug 'bfredl/nvim-miniyank'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'junegunn/vader.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'juanibiapina/vim-lighttree'
 " }}} Util
 
 " UI theme font {{{
@@ -109,7 +87,7 @@ Plug 'icymind/NeoSolarized'
 "Plug 'tweekmonster/braceless.vim'
 "Plug 'samuelsimoes/vim-jsx-utils'
 "Plug 'alvan/vim-closetag'
-"Plug 'junegunn/vim-emoji'
+Plug 'junegunn/vim-emoji'
 " }}} maybe next
 
 call plug#end()

@@ -116,57 +116,10 @@ map _ <Plug>(expand_region_shrink)
 "let g:AutoClosePairs_del= "{}"
 " }}} vim-autoclose
 
-" quickrun {{{
-let g:quickrun_config = {}
-let g:quickrun_config.javascript = {
-            \'outputter/buffer/split': 'bo',
-            \'outputter/buffer/into': 1,
-            \'outputter/buffer/close_on_empty': 1
-            \}
-let g:quickrun_config.coffee = {
-            \'outputter/buffer/split': 'bo',
-            \'outputter/buffer/into': 1,
-            \'outputter/buffer/close_on_empty': 1
-            \}
-let g:quickrun_config.python = {
-            \'outputter/buffer/split': 'bo',
-            \'outputter/buffer/into': 1,
-            \'outputter/buffer/close_on_empty': 1
-            \}
-let g:quickrun_config.sh = {
-            \'outputter/buffer/split': 'bo',
-            \'outputter/buffer/into': 1,
-            \'outputter/buffer/close_on_empty': 1
-            \}
-" }}} quickrun
-
 " easy-align {{{
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 " }}} easy-align
-
-" Goyo "{{{
-function! s:goyo_enter()
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  set nocursorcolumn
-  set nocursorline
-  Limelight
-endfunction
-
-function! s:goyo_leave()
-  set showmode
-  set showcmd
-  set scrolloff=3
-  set cursorcolumn
-  set cursorline
-  Limelight!
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-" }}} Goyo
 
 " mundo {{{
 nnoremap <Leader>h :MundoToggle<CR>
@@ -186,8 +139,6 @@ nnoremap <silent> ,th :call neoterm#close()<CR>
 nnoremap <silent> ,tl :call neoterm#clear()<CR>
 " kills the current job (send a <c-c>)
 nnoremap <silent> ,tc :call neoterm#kill()<CR>
-" command
-nnoremap <silent> ,tm :T
 " }}} neoterm
 
 " lightline {{{
@@ -240,7 +191,6 @@ call denite#custom#map(
             \)
 noremap <silent> <c-p> :Denite file_rec<CR>
 noremap <silent> <Leader>b :Denite buffer<CR>
-noremap <silent> <leader>e :Denite file_manager<CR>
 " Add custom menus
 let s:menus = {}
 let s:menus.neovim = {
